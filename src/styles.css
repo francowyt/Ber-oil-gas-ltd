@@ -1,0 +1,215 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * BER OIL & GAS design system.
+ * Brand colours are extracted from the official logo:
+ * industrial blue (gear/wordmark) and flame red (flame/script).
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --font-display: var(--font-heading);
+  --font-sans: var(--font-body);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-flame: var(--flame);
+  --color-flame-foreground: var(--flame-foreground);
+  --color-navy: var(--navy);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-steel: var(--steel);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.25rem;
+  --font-heading: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+
+  --background: oklch(0.99 0.002 250);
+  --foreground: oklch(0.19 0.03 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.19 0.03 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.19 0.03 255);
+
+  /* Logo blue */
+  --primary: oklch(0.47 0.16 260);
+  --primary-foreground: oklch(0.99 0.002 250);
+  /* Logo red */
+  --flame: oklch(0.56 0.21 27);
+  --flame-foreground: oklch(0.99 0.002 250);
+  /* Deep navy / charcoal */
+  --navy: oklch(0.22 0.045 258);
+  --navy-foreground: oklch(0.97 0.005 250);
+  --steel: oklch(0.55 0.02 255);
+  /* Official WhatsApp green */
+  --whatsapp: #25d366;
+  --whatsapp-foreground: #ffffff;
+
+  --secondary: oklch(0.955 0.008 250);
+  --secondary-foreground: oklch(0.22 0.045 258);
+  --muted: oklch(0.96 0.006 250);
+  --muted-foreground: oklch(0.5 0.02 255);
+  --accent: oklch(0.94 0.02 255);
+  --accent-foreground: oklch(0.22 0.045 258);
+  --destructive: oklch(0.56 0.21 27);
+  --destructive-foreground: oklch(0.99 0.002 250);
+  --border: oklch(0.9 0.012 250);
+  --input: oklch(0.9 0.012 250);
+  --ring: oklch(0.47 0.16 260);
+
+  --sidebar: oklch(0.98 0.004 250);
+  --sidebar-foreground: oklch(0.19 0.03 255);
+  --sidebar-primary: oklch(0.47 0.16 260);
+  --sidebar-primary-foreground: oklch(0.99 0.002 250);
+  --sidebar-accent: oklch(0.94 0.02 255);
+  --sidebar-accent-foreground: oklch(0.22 0.045 258);
+  --sidebar-border: oklch(0.9 0.012 250);
+  --sidebar-ring: oklch(0.47 0.16 260);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 78rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 1024px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+
+  &::before {
+    content: "";
+    width: 1.75rem;
+    height: 2px;
+    background: var(--color-flame);
+  }
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility btn-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+  &:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -14px rgba(10, 30, 70, 0.55); }
+}
+
+.nav-link { position: relative; }
+.nav-link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
+  background: var(--color-flame); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+.reveal-scale { transform: translateY(18px) scale(0.97); }
+.reveal-scale[data-visible="true"] { transform: none; }
+
+@keyframes hero-img { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: scale(1); } }
+@keyframes hero-overlay { from { opacity: 0.6; transform: translateX(-4%); } to { opacity: 1; transform: none; } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+.hero-img { animation: hero-img 1.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-overlay { animation: hero-overlay 1.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-in { animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: var(--d, 0ms); }
+.page-fade { animation: fade-up 0.35s ease-out both; }
+
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-whatsapp) 55%, transparent); }
+  70% { box-shadow: 0 0 0 14px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.wa-pulse { animation: wa-pulse 2.6s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; }
+  .wa-pulse, .hero-img, .hero-overlay, .hero-in, .page-fade { animation: none !important; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
